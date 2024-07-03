@@ -1,47 +1,34 @@
-// C++ program to demonstrate how to inherit a class
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-// Base class that is to be inherited
-class Parent {
+class Person {
+private:
+    string lastName;
+    string firstName;
+    string zipCode;
+
 public:
-    // base class members
-    int id_p;
-    void printID_p()
-    {
-        cout << "Base ID: " << id_p << endl;
+    
+    Person() : lastName("X"), firstName("X"), zipCode("X") {}
+
+
+    Person(const string& ln, const string& fn, const string& zip)
+        : lastName(ln), firstName(fn), zipCode(zip) {}
+
+
+    void display() const {
+        cout << "Last Name: " << lastName << endl;
+        cout << "First Name: " << firstName << endl;
+        cout << "Zip Code: " << zipCode << endl;
     }
 };
 
-// Sub class or derived publicly inheriting from Base
-// Class(Parent)
-class Child : public Parent {
-public:
-    // derived class members
-    int id_c;
-    void printID_c()
-    {
-        cout << "Child ID: " << id_c << endl;
-    }
-};
+int main() {
+    Person p1;
+    Person p2("joe", "dev", "67890");
 
-// main function
-int main()
-{
-    // creating a child class object
-    Child obj1;
-
-    // An object of class child has all data members
-    // and member functions of class parent
-    // so we try accessing the parents method and data from
-    // the child class object.
-    obj1.id_p = 7;
-    obj1.printID_p();
-
-    // finally accessing the child class methods and data
-    // too
-    obj1.id_c = 91;
-    obj1.printID_c();
+    p1.display();
+    p2.display();
 
     return 0;
 }
